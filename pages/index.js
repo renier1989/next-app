@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Padme from "../public/padme.png";
+// import Padme from "../public/padme.png";
 
 const Pokemon = ({pokemon})=> {
   const id = pokemon.url.split('/').filter(x=>x).pop();
@@ -21,25 +21,25 @@ export default function Home({ pokemones }) {
 
       <div className="flex gap-1 justify-center mb-10">
         {/* esta puede ser una forma de mostrar imagenes con el componente de <Image/> */}
-        <Image
+        {/* <Image
           className="rounded-md"
           src={"/renier.png"}
           width={400}
           height={400}
           alt="renier"
-        />
+        /> */}
         {/* esta puede ser otra forma de mostrar imagenes , importandola. */}
-        <Image
+        {/* <Image
           className="rounded-md"
           src={Padme}
           width={400}
           height={400}
           alt="padme"
-        />
+        /> */}
       </div>
 
       <div className=" flex flex-col items-center justify-center  ">
-      <p className="flex items-center justify-center mx-auto text-2xl font-semibold text-slate-500">Lista de pokemones</p>
+      <p data-testid="titulo" className="flex items-center justify-center mx-auto text-2xl font-semibold text-slate-500">Lista de pokemones</p>
         <ul className="grid grid-cols-8 gap-4 my-20">
           {pokemones.map(poke=> <Pokemon pokemon={poke} key={poke.name} />)}
         </ul>
