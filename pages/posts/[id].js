@@ -1,17 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { useIsMounted } from "@/hooks/useIsMounted";
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react";
 
 function postDetail() {
+    const isMounted = useIsMounted();
     const router = useRouter();
-    const [loaded, setLoaded] = useState(false);
-    useEffect(()=>{
-        if(router.isReady){
-            setLoaded(true);
-        }
-    },[router.isReady]); // esto  es simplemente para verificar si ya se cargo la ruta.
 
-    if(!loaded){
+    if(!isMounted) {
         return null;
     }
     console.log({router}, router.query.id);
