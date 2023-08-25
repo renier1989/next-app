@@ -2,9 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import Padme from "../public/padme.png";
 
-const Pokemon = ({name})=> {
-  return(
-    <li>{name}</li>
+const Pokemon = ({pokemon})=> {
+  const id = pokemon.url.split('/').filter(x=>x).pop();
+    // console.log("🚀 ~ file: index.js:7 ~ Pokemon ~ id:", id)
+    return(
+    <li className=" bg-slate-200 p-2 rounded-md shadow-md cursor-pointer">
+      <Link href={`/pokemon/${id}`}>{pokemon.name}</Link>
+      
+      </li>
   )
 }
 
@@ -35,10 +40,10 @@ export default function Home({ pokemones }) {
         />
       </div>
 
-      <p>Lista de pokemones</p>
-      <div>
-        <ul>
-          {pokemones.map(poke=> <Pokemon name={poke.name} key={poke.id} />)}
+      <div className=" flex flex-col items-center justify-center  ">
+      <p className="flex items-center justify-center mx-auto">Lista de pokemones</p>
+        <ul className="grid grid-cols-8 gap-4 my-20">
+          {pokemones.map(poke=> <Pokemon pokemon={poke} key={poke.id} />)}
         </ul>
       </div>
     </div>
