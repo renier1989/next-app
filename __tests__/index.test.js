@@ -5,28 +5,19 @@ describe("Index", () => {
   describe("Component", () => {
     // igualmente esto metodo de describe se puede anidar y definirle nombre como para dar un titulo
     it("Se Renderiza", () => {
-      
-
-      // // ESTA ES UNA FORMA DE HACER LAS VERIFICACIONES
-    //   // aqui no le pasamos para es como para verificar de que se esta renderizando
-    //   render(
-    //     // con esto podemos verificar que se esta renderizando el componente principal, y este como tiene una propiedad de pokemons este espero algo similar, por lo que se le puede poner un areglo vacio para simular eso
-    //     <Index pokemones={[]} />
-    //   );
-    //   // esta es una forma de validar si al  renderizar el componente, a traves de un id "titulo" definido como "data.testid='titulo'" se puede captura ese elemento y verificar si se renderiza
-    //   const paragraph = screen.getByTestId("titulo");
-    //   expect(paragraph).toBeInTheDocument();
-
-    // // ESTA ES OTRA MANERA UN POCO MAS ESPECIFICA DE VALIDAR A TRAVES DE LA PROPIEDAD getByTestId QUE ES PARTE DE render() 
-    // con esto puede saber si especificamente en ese componente se renderizo ese elemento. 
-    const {getByTestId} =render(
-        
-        <Index pokemones={[]} />
-      );
-      // esta es una forma de validar si al  renderizar el componente, a traves de un id "titulo" definido como "data.testid='titulo'" se puede captura ese elemento y verificar si se renderiza
-      const paragraph = getByTestId("titulo");
+      render(<Index pokemones={[{name:'Renier Vargas', url : 'ruta/de/ejemplos/1'}]} />); // aqui hago una simularion que un pokemon con la estructura real de como esta conformado un obj que recive este componente 
+      //   const paragraph = getByTestId("titulo"); // esto eso el metodo getByTestId pero de render, no usa screen
     //   const paragraph = screen.getByText("Lista de pokemones"); // esto es una forma tambien se validar texto de forma mas especifica si se renderizo ese texto talcual como esta escrito en el archivo index
+      const paragraph = screen.getByTestId("titulo"); // esto es una forma tambien se validar texto de forma mas especifica si se renderizo ese texto talcual como esta escrito en el archivo index
       expect(paragraph).toBeInTheDocument();
+
+      const nombre = screen.getByText('Renier Vargas'); // aqui estoy haciendo la comprobacion de si al renderizar Index este tiene un pokemon con el nombre especificaco
+    //   console.log(nombre.getAttribute('href'));  // esto es para ver directamente a un atributo y sus parametreos para saber es que el valor que recibe y  asi validar si es que realemente esta recibiendo eso
+      expect(nombre).toBeInTheDocument();
+
+      const url = nombre.getAttribute('href');  // esto lo esta tomando del compoennte Link por que es lo que se esta renderiznado y encontrando con ese texto en la linea 14 , por eso puedo validar sobre ese componente si hay una propiedad href y tiene una estructura esperada
+      expect(url).toEqual('/pokemon/1');
+
     });
   });
 });
