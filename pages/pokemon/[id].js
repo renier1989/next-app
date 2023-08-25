@@ -1,8 +1,13 @@
+import Image from "next/image";
+import Link from "next/link";
 
 function PokemonDetail({data}) {
-    console.log(data)
   return (
-    <div>PokemonDetail </div>
+    <div>
+        <p>{data.name} Pokemon # {data.id}</p>
+        <Image src={data.sprites.front_default} alt={data.name} width={300} height={300}/>
+        <Link href={'/'}> Volver al inicio </Link>
+    </div>
   )
 }
 

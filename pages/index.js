@@ -8,13 +8,11 @@ const Pokemon = ({pokemon})=> {
     return(
     <li className=" bg-slate-200 p-2 rounded-md shadow-md cursor-pointer">
       <Link href={`/pokemon/${id}`}>{pokemon.name}</Link>
-      
       </li>
   )
 }
 
 export default function Home({ pokemones }) {
-  console.log("🚀 ~ file: index.js:5 ~ Home ~ pokemones:", pokemones)
   return (
     <div>
       <p> Hola mundo, esta es una aplicacion creada con Next.js</p>
@@ -43,7 +41,7 @@ export default function Home({ pokemones }) {
       <div className=" flex flex-col items-center justify-center  ">
       <p className="flex items-center justify-center mx-auto">Lista de pokemones</p>
         <ul className="grid grid-cols-8 gap-4 my-20">
-          {pokemones.map(poke=> <Pokemon pokemon={poke} key={poke.id} />)}
+          {pokemones.map(poke=> <Pokemon pokemon={poke} key={poke.name} />)}
         </ul>
       </div>
     </div>
