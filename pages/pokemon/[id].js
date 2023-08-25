@@ -11,7 +11,7 @@ function PokemonDetail({ data }) {
 //   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <p>
         {data.name} Pokemon # {data.id}
       </p>
