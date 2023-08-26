@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import Padme from "../public/padme.png";
+// import Padme from "../public/padme.png";
 import { useEffect, useState } from "react";
 
 const Pokemon = ({pokemon})=> {
   const id = pokemon.url.split('/').filter(x=>x).pop();
     // console.log("🚀 ~ file: index.js:7 ~ Pokemon ~ id:", id)
     return(
-    <li className=" bg-slate-200 p-2 rounded-md shadow-md cursor-pointer">
+    <li data-testid={id} className=" bg-slate-200 p-2 rounded-md shadow-md cursor-pointer">
       <Link href={`/pokemon/${id}`}>{pokemon.name}</Link>
       </li>
   )
@@ -51,7 +51,7 @@ export default function Home() {
         {/* esta puede ser otra forma de mostrar imagenes , importandola. */}
         <Image
           className="rounded-md"
-          src={Padme}
+          src={"/padme.png"}
           width={400}
           height={400}
           alt="padme"

@@ -21,13 +21,13 @@ export default function Home({ pokemones }) {
 
       <div className="flex gap-1 justify-center mb-10">
         {/* esta puede ser una forma de mostrar imagenes con el componente de <Image/> */}
-        {/* <Image
+        <Image
           className="rounded-md"
           src={"/renier.png"}
           width={400}
           height={400}
           alt="renier"
-        /> */}
+        />
         {/* esta puede ser otra forma de mostrar imagenes , importandola. */}
         {/* <Image
           className="rounded-md"
@@ -36,6 +36,13 @@ export default function Home({ pokemones }) {
           height={400}
           alt="padme"
         /> */}
+        <Image
+          className="rounded-md"
+          src={'/padme.png'}
+          width={400}
+          height={400}
+          alt="padme"
+        />
       </div>
 
       <div className=" flex flex-col items-center justify-center  ">
